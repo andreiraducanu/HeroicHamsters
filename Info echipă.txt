@@ -1,0 +1,12 @@
+﻿Nume: Heroic Hamsters
+
+Membri:
+
+Orășanu Diana (tech leader)
+Bulhac Vlad-Ionuț
+Burduhosu Mihai-Cristian
+Chontas Panagiotis-Efstratios
+Răducanu Andrei-Bogdan
+Stavarache Antonio
+
+Aria de lucru: Back end

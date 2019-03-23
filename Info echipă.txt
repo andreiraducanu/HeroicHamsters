@@ -10,3 +10,6 @@ Răducanu Andrei-Bogdan
 Stavarache Antonio
 
 Aria de lucru: Back end
+
+Link de trello:
+https://trello.com/b/xyAkZvGa/heroic-hamsters

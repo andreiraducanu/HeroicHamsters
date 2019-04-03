@@ -2,6 +2,7 @@
 ======
 
 **Membri**
+
 * Răducanu Andrei-Bogdan (SCRUM MASTER)
 * Orășanu Diana
 * Bulhac Vlad-Ionuț
@@ -10,7 +11,9 @@
 * Stavarache Antonio
 
 **Aria de lucru** 
+
 Backend
 
 **Link de trello**
+
 https://trello.com/b/xyAkZvGa/heroic-hamsters

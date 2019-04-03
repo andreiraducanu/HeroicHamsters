@@ -10,11 +10,9 @@
 * Chontas Panagiotis-Efstratios
 * Stavarache Antonio
 
-**Aria de lucru** 
+Aria de lucru **Backend**
 
-Backend
-
-**Link de trello**
+**Link de trello** 
 
 https://trello.com/b/xyAkZvGa/heroic-hamsters
 
@@ -24,8 +22,8 @@ https://trello.com/b/xyAkZvGa/heroic-hamsters
 - [x] Learning about MERN stack
 - [x] Learning about Express + MongoDB
 - [ ] Create basic functionality 
-- [ ] Setting models
-- [ ] Setting routes
+- [ ] Setting *models*
+- [ ] Setting *routes*
 - [ ] Connect with *frontend*
 - [ ] Connect with *database*
 - [ ] Connect with *machine learning*

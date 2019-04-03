@@ -10,13 +10,9 @@
 * Chontas Panagiotis-Efstratios
 * Stavarache Antonio
 
-Aria de lucru 
+**Aria de lucru** Backend
 
-**Backend**
-
-**Link de trello** 
-
-https://trello.com/b/xyAkZvGa/heroic-hamsters
+**Link de trello** https://trello.com/b/xyAkZvGa/heroic-hamsters
 
 ## Roadmap
 - [x] Create C4 diagrams

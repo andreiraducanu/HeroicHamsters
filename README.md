@@ -1,7 +1,7 @@
 ﻿Heroic Hamsters
 ======
 
-## Membri
+**Membri**
 * Răducanu Andrei-Bogdan (SCRUM MASTER)
 * Orășanu Diana
 * Bulhac Vlad-Ionuț
@@ -9,8 +9,8 @@
 * Chontas Panagiotis-Efstratios
 * Stavarache Antonio
 
-## Aria de lucru 
+**Aria de lucru** 
 Backend
 
-## Link de trello:
+**Link de trello**
 https://trello.com/b/xyAkZvGa/heroic-hamsters

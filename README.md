@@ -17,8 +17,9 @@
 ## Roadmap
 - [x] Create C4 diagrams
 - [x] Installing and configuring tools
-- [x] Learning about MERN stack
-- [x] Learning about Express + MongoDB
+- [x] Learn about MERN stack
+- [x] Learn about Express + MongoDB
+- [ ] Learn abot TypeScript
 - [ ] Create basic functionality 
 - [ ] Setting *models*
 - [ ] Setting *routes*

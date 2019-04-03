@@ -10,7 +10,9 @@
 * Chontas Panagiotis-Efstratios
 * Stavarache Antonio
 
-Aria de lucru **Backend**
+Aria de lucru 
+
+**Backend**
 
 **Link de trello** 
 

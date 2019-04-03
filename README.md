@@ -17,3 +17,15 @@ Backend
 **Link de trello**
 
 https://trello.com/b/xyAkZvGa/heroic-hamsters
+
+## Roadmap
+- [x] Create C4 diagrams
+- [x] Installing and confinguring tools
+- [x] Learning about MERN stack
+- [x] Learning about Express + MongoDB
+- [ ] Create basic functionality 
+- [ ] Setting models
+- [ ] Setting routes
+- [ ] Connect with *frontend*
+- [ ] Connect with *database*
+- [ ] Connect with *machine learning*

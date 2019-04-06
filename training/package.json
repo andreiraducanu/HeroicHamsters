@@ -1,0 +1,15 @@
+{
+  "name": "training",
+  "version": "1.0.0",
+  "description": "Used for learning",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "Raducanu Andrei-Bogdan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

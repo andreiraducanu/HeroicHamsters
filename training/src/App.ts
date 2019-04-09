@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import Controller from './controllers/Controller';
 
 class App {
-    private static PORT = 3003;
+    private readonly PORT = 3003;
     public app: express.Application;
 
     constructor(controllers: Controller[]) {

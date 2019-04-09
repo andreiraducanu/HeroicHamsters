@@ -18,8 +18,8 @@ class App {
 
     /* start the server */
     public listen(): void {
-        this.app.listen(App.PORT, () => {
-            console.log(`Server is running at http://localhost:${App.PORT}`);
+        this.app.listen(this.PORT, () => {
+            console.log(`Server is running at http://localhost:${this.PORT}`);
         });
     }
 

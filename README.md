@@ -19,7 +19,7 @@
 - [x] Installing and configuring tools
 - [x] Learn about MERN stack
 - [x] Learn about Express + MongoDB
-- [ ] Learn abot TypeScript
+- [ ] Learn about TypeScript
 - [ ] Create basic functionality 
 - [ ] Setting *models*
 - [ ] Setting *routes*

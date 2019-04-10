@@ -79,11 +79,11 @@ export class RoomsController implements IController{
     }
 
     private init():any{
-        this.router.get('/rooms',this.getAll.bind(this))
-                     .get('/rooms/:id',this.getByID.bind(this))
-                    .post('/rooms',this.add.bind(this))
-                    .put('/rooms/:id',this.update.bind(this))
-                    .delete('/rooms/:id',this.delete.bind(this));
+        this.router.get('/rooms/getall',this.getAll.bind(this))
+                     .get('/rooms/getbyid/:id',this.getByID.bind(this))
+                    .post('/rooms/post',this.add.bind(this))
+                    .put('/rooms/put/:id',this.update.bind(this))
+                    .delete('/rooms/delete/:id',this.delete.bind(this));
     }
 
     public getRoutes():Router{

@@ -79,11 +79,11 @@ export class FoodController implements IController {
      }
  
      private init():any{
-          this.router.get('/food',this.getAll.bind(this))
-                           .get('/food/:id',this.getByID.bind(this))
-                           .post('/food',this.add.bind(this))
-                           .put('/food/:id',this.update.bind(this))
-                           .delete('/food/:id',this.delete.bind(this));
+          this.router.get('/food/getall',this.getAll.bind(this))
+                           .get('/food/getbyid/:id',this.getByID.bind(this))
+                           .post('/food/post',this.add.bind(this))
+                           .put('/food/put/:id',this.update.bind(this))
+                           .delete('/food/delete/:id',this.delete.bind(this));
      }
      
      public getRoutes():Router{

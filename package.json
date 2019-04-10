@@ -1,0 +1,33 @@
+{
+  "name": "VladBulhac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "@types/mongoose": "^5.3.25",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0",
+    "ts-node": "^8.0.3",
+    "typegoose": "^5.6.0",
+    "typescript": "^3.4.2",
+    "typescript-ioc": "^1.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "ts-node ./src/servertraining.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreiraducanu/HeroicHamsters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreiraducanu/HeroicHamsters/issues"
+  },
+  "homepage": "https://github.com/andreiraducanu/HeroicHamsters#readme"
+}

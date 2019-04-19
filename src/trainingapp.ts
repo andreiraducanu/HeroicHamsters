@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 import {RoomsController} from "./controllers/RoomsController";
 import { Inject } from "typescript-ioc";
 import { FoodController } from './controllers/FoodController';
+import { StockController } from './controllers/StockController';
 
  export class App{
     
@@ -22,6 +23,8 @@ import { FoodController } from './controllers/FoodController';
       private roomsController!: RoomsController;
       @Inject
       private foodController!:FoodController;
+      @Inject
+      private stockController!:StockController;
 
       //connect to mongodb at localhost port 27017 trainingapp
      private mongoInit():void{
@@ -41,6 +44,7 @@ import { FoodController } from './controllers/FoodController';
      private routes():void{
         this.app.use('/',this.roomsController.getRoutes());
          this.app.use('/',this.foodController.getRoutes());
+         this.app.use('/',this.stockController.getRoutes());
      }
  }
 

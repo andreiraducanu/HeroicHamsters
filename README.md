@@ -19,10 +19,9 @@
 - [x] Installing and configuring tools
 - [x] Learn about MERN stack
 - [x] Learn about Express + MongoDB
-- [ ] Learn about TypeScript
-- [ ] Create basic functionality 
-- [ ] Setting *models*
-- [ ] Setting *routes*
+- [x] Learn about TypeScript
+- [x] Create basic functionality 
+- [x] Setting *models*
+- [x] Setting *routes*
 - [ ] Connect with *frontend*
-- [ ] Connect with *database*
 - [ ] Connect with *machine learning*

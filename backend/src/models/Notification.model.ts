@@ -1,14 +1,12 @@
-import { pre, prop, Typegoose } from 'typegoose';
+import { pre, prop, Typegoose, Ref } from 'typegoose';
 import * as mongoose from 'mongoose';
 
-import { Item } from './Item.model';
-import { Location } from './Location.model';
+import { Quantity } from './Quantity.model';
 
-type Status = 'open' | 'closed';
-const StatusType = {
-    OPEN: 'open' as Status,
-    CLOSED: 'closed' as Status,
-};
+enum Status {
+    OPEN = 'open',
+    CLOSED = 'closed',
+}
 
 @pre<Notification>('save', function(next) {
     if (this.creationTime === undefined)
@@ -16,19 +14,13 @@ const StatusType = {
     next();
 })
 export class Notification extends Typegoose {
-    @prop({ required: true, ref: Item })
-    itemId: Ref<Item>;
+    @prop({ required: true, ref: Quantity })
+    quantity: Ref<Quantity>;
 
     @prop({ required: true, default: undefined })
     creationTime: string;
 
-    @prop({ required: true })
-    location: Location;
-
-    @prop({ required: true, unique: true, min: 1 })
-    managerId: number;
-
-    @prop({ required: true, enum: Object.values(StatusType) })
+    @prop({ required: true, enum: Status, default: Status.OPEN })
     status: Status;
 }
 

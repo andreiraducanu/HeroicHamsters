@@ -4,7 +4,6 @@ import Controller from './Controller';
 import HttpStatus from '../utils/HttpStatus';
 
 import CategoryModel from '../models/Category.model';
-import ItemModel from '../models/Item.model';
 
 class UserController implements Controller {
     public rootPath = '/user';

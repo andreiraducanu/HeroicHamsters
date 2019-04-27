@@ -5,8 +5,8 @@ import { Location } from './Location.model';
 import { Item } from './Item.model';
 
 export class Quantity extends Typegoose {
-    @prop({ required: true })
-    location: Location;
+    @prop({ required: true, ref: Location })
+    location: Ref<Location>;
 
     @prop({ required: true, ref: Item })
     item: Ref<Item>;

@@ -8,7 +8,7 @@ export class Location extends Typegoose {
     @prop({ required: true })
     levelIndex: number;
 
-    @prop({ required: true })
+    @prop({ required: true, min: 0 })
     tableIndex: number;
 }
 

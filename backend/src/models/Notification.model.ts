@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 
 import { Item } from './Item.model';
 import { Admin } from './Admin.model';
-import { Location } from './Location.model';
+import { Quantity } from './Quantity.model';
 
 type Status = 'open' | 'closed';
 const StatusType = {
@@ -23,8 +23,8 @@ export class Notification extends Typegoose {
     @prop({ required: true, default: undefined })
     creationTime: string;
 
-    @prop({ required: true, ref: Location })
-    location: Ref<Location>;
+    @prop({ required: true, ref: Quantity })
+    quantity: Ref<Quantity>;
 
     @prop({ required: true, unique: true, min: 1 })
     managerId: Ref<Admin>;

@@ -8,13 +8,12 @@ import UserController from '../controllers/UserController';
 let app = new App([new UserController()]).getExpressApp();
 
 describe('/user', function() {
-    describe('#GET /getall', function() {
-        it('should return a list of categories and the status 200', function(done) {
+    describe('#GET /elements', function() {
+        it('should return the structure of elements and the status 200', function(done) {
             supertest(app)
-                .get('/user/getAll')
+                .get('/user/elements')
                 .end(function(err, res) {
                     expect(res.status).to.equal(HttpStatus.OK);
-                    expect(res.body).to.be.an('array');
                     done();
                 });
         });

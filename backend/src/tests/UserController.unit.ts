@@ -58,6 +58,32 @@ describe('/user', function() {
                 .get('/user/notifications')
                 .end(function(err, res) {
                     expect(res.body).to.be.a('array');
+                    for (let i = 0; i < res.body.length; i++) {
+                        expect(res.body[i]).to.have.property('_id');
+                        expect(res.body[i]).to.have.property('item');
+                        expect(res.body[i]).to.have.property('location');
+                        expect(res.body[i]).to.have.property('quantity');
+                        expect(res.body[i]).to.have.property('creationTime');
+                        expect(res.body[i]).to.have.property('status');
+                        expect(res.body[i]).to.have.property('__v');
+                    }
+                    done();
+                });
+        });
+
+        it('should return a list of notifications using filters', function(done) {
+            supertest(app)
+                .get('/user/notifications')
+                .send({ status: 'open', quantity: '0' })
+                .end(function(err, res) {
+                    expect(res.body).to.be.a('array');
+                    expect(res.status).to.equal(HttpStatus.OK);
+                    for (let i = 0; i < res.body.length; i++) {
+                        expect(res.body[i]).to.have.property('quantity');
+                        expect(res.body[i]).to.have.property('status');
+                        expect(res.body[i].status).to.equal('open');
+                        expect(res.body[i].quantity).to.equal(0);
+                    }
                     done();
                 });
         });
@@ -73,7 +99,7 @@ describe('/user', function() {
 
     describe('#GET /locations/:id', function() {
         it('should return an object of type location', function(done) {
-            var id = '5cc86855f92d9338b859ca43';
+            var id = '5cc898effa32e90164d34a3f';
             supertest(app)
                 .get('/user/locations/' + id)
                 .end(function(err, res) {
@@ -87,7 +113,7 @@ describe('/user', function() {
                 });
         });
         it('should return the status the status 200', function(done) {
-            var id = '5cc86855f92d9338b859ca43';
+            var id = '5cc898effa32e90164d34a3f';
             supertest(app)
                 .get('/user/locations/' + id)
                 .end(function(err, res) {

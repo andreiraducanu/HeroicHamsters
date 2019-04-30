@@ -35,7 +35,11 @@ class QuantityRepository extends ICrudRepository<Quantity> {
         return QuantityModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Quantity> {
+    public deleteAll(): Promise<any> {
+        return QuantityModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Quantity> {
         return QuantityModel.findByIdAndRemove(id).exec();
     }
 

@@ -32,7 +32,11 @@ class RequestRepository extends ICrudRepository<Request> {
         return RequestModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Request> {
+    public deleteAll(): Promise<any> {
+        return RequestModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Request> {
         return RequestModel.findByIdAndRemove(id).exec();
     }
 

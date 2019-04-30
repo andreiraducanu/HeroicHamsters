@@ -36,7 +36,11 @@ class MessageRepository extends ICrudRepository<Message> {
         return MessageModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Message> {
+    public deleteAll(): Promise<any> {
+        return MessageModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Message> {
         return MessageModel.findByIdAndRemove(id).exec();
     }
 

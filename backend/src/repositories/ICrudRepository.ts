@@ -9,7 +9,9 @@ abstract class ICrudRepository<T extends Typegoose> {
 
     public abstract update(id: string, document: T): Promise<T>;
 
-    public abstract delete(id: string): Promise<T>;
+    public abstract deleteAll(): Promise<any>;
+
+    public abstract deleteById(id: string): Promise<T>;
 }
 
 export default ICrudRepository;

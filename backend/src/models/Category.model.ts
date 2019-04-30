@@ -1,16 +1,11 @@
 import * as mongoose from 'mongoose';
-import { pre, prop, Typegoose, Ref } from 'typegoose';
+import { prop, Typegoose, Ref } from 'typegoose';
 
-@pre<Category>('save', function(next) {
-    if (this.parent == undefined) this.parent == null;
-
-    next();
-})
 export class Category extends Typegoose {
     @prop({ required: true })
     name: string;
 
-    @prop({ required: true, ref: Category })
+    @prop({ required: true, ref: Category, default: undefined })
     parent: Ref<Category>;
 }
 

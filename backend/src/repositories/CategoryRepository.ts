@@ -28,6 +28,13 @@ class CategoryRepository extends ICrudRepository<Category> {
         return CategoryModel.findOne({ parent: null }).exec();
     }
 
+    public getLast() {
+        return CategoryModel.findOne({})
+            .sort({ _id: -1 })
+            .limit(1)
+            .exec();
+    }
+
     public getSubcategories(parentId: string): Promise<Category[]> {
         return CategoryModel.find({ parent: parentId }).exec();
     }
@@ -79,7 +86,11 @@ class CategoryRepository extends ICrudRepository<Category> {
         return CategoryModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Category> {
+    public deleteAll(): Promise<any> {
+        return CategoryModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Category> {
         return CategoryModel.findByIdAndRemove(id).exec();
     }
 }

@@ -36,7 +36,11 @@ class NotificationRepository extends ICrudRepository<Notification> {
         return NotificationModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Notification> {
+    public deleteAll(): Promise<any> {
+        return NotificationModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Notification> {
         return NotificationModel.findByIdAndRemove(id).exec();
     }
 

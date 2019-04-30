@@ -31,7 +31,11 @@ class LocationRepository extends ICrudRepository<Location> {
         return LocationModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Location> {
+    public deleteAll(): Promise<any> {
+        return LocationModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Location> {
         return LocationModel.findByIdAndRemove(id).exec();
     }
 }

@@ -35,7 +35,11 @@ class ItemRepository extends ICrudRepository<Item> {
         return ItemModel.findByIdAndUpdate(id, document, { new: true }).exec();
     }
 
-    public delete(id: string): Promise<Item> {
+    public deleteAll(): Promise<any> {
+        return ItemModel.collection.deleteMany({});
+    }
+
+    public deleteById(id: string): Promise<Item> {
         return ItemModel.findByIdAndRemove(id).exec();
     }
 

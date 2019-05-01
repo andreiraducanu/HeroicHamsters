@@ -5,7 +5,7 @@ export class Location extends Typegoose {
     @prop({ required: true, minlength: 2 })
     companyName: string;
 
-    @prop({ required: true, min: 0 })
+    @prop({ required: true })
     levelIndex: number;
 
     @prop({ required: true, min: 0 })

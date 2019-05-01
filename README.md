@@ -23,5 +23,6 @@
 - [x] Create basic functionality 
 - [x] Setting *models*
 - [x] Setting *routes*
-- [ ] Connect with *frontend*
+- [x] Connect with *user*
+- [ ] Connect with *admin*
 - [ ] Connect with *machine learning*

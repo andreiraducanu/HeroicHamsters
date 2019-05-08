@@ -1,12 +1,7 @@
 import * as mongoose from 'mongoose';
-import { pre, prop, Typegoose, Ref } from 'typegoose';
+import { prop, Typegoose, Ref } from 'typegoose';
 import { ElementType } from '../utils/Enums';
 
-@pre<Element>('save', function(next) {
-    if (this.parent == undefined) this.parent == null;
-
-    next();
-})
 export class Element extends Typegoose {
     @prop({ required: true })
     name: string;

@@ -17,30 +17,18 @@ class UserController implements Controller {
     }
 
     private initRoutes(): void {
-        this.router.get(`${this.rootPath}/stations`, this.getLocations.bind(this));
-        this.router.get(`${this.rootPath}/elements`, this.getElements.bind(this));
+        this.router.get(`${this.rootPath}/elements/:stationId`, this.getElements.bind(this));
 
         this.router.post(`${this.rootPath}/requests`, this.submitRequest.bind(this));
         this.router.post(`${this.rootPath}/notifications`, this.submitNotification.bind(this));
     }
 
-    /* Route for gettinge all the stations */
-    private getLocations(req: express.Request, res: express.Response): void {
-        StationRepository.getInstance()
-            .getAll()
-            .then(stations => {
-                if (stations.length == 0) res.status(HttpStatus.NotFound).send();
-                else res.status(HttpStatus.OK).json(stations);
-            })
-            .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
-            });
-    }
-
     /* Route for getting all the elements */
     private getElements(req: express.Request, res: express.Response): void {
+        const stationId = req.params.stationId;
+
         ElementRepository.getInstance()
-            .getElements()
+            .getElements(stationId)
             .then(elements => {
                 res.status(HttpStatus.OK).json(elements);
             })

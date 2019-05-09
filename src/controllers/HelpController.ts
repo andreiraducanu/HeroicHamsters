@@ -19,6 +19,7 @@ class HelpController implements Controller {
 
     private create(req: express.Request, res: express.Response): void {
         // aici va fi logica pt inserare
+        console.log(data.location.stations.length);
 
         res.status(HttpStatus.OK).send('values inserted into database');
     }

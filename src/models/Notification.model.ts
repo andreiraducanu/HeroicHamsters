@@ -6,8 +6,8 @@ import { Station } from './Station.model';
 import { Element } from './Element.model';
 
 @pre<Notification>('save', function(next) {
-    if (this.item == undefined) throw 'NotificationModel: item not set';
-    if (this.station == undefined) throw 'NotificationModel: station not set';
+    if (this.itemId == undefined) throw 'NotificationModel: itemId not set';
+    if (this.stationId == undefined) throw 'NotificationModel: stationId not set';
     if (this.creationTime == undefined) this.creationTime = new Date(Date.now()).toLocaleString('en-GB');
     if (this.status == undefined) this.status = Status.OPEN;
 
@@ -15,10 +15,10 @@ import { Element } from './Element.model';
 })
 export class Notification extends Typegoose {
     @prop({ required: true, ref: Element })
-    item: Ref<Element>;
+    itemId: Ref<Element>;
 
     @prop({ required: true, ref: Station })
-    station: Ref<Station>;
+    stationId: Ref<Station>;
 
     @prop({ required: true, min: 0 })
     quantity: number;

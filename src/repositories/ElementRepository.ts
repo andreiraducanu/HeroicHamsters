@@ -56,7 +56,7 @@ class ElementRepository extends ICrudRepository<Element> {
                     notification.id = messages[j]._id;
                     notification.type = messages[j].type;
                     notification.content = messages[j].content;
-                    notification.itemId = messages[j].item;
+                    notification.itemId = messages[j].itemId;
                     notification.createdAt = messages[j].createdAt;
 
                     notifications.push(notification);

@@ -1,9 +1,11 @@
 import * as mongoose from 'mongoose';
 import { pre, prop, Typegoose, Ref } from 'typegoose';
 import { ElementType } from '../utils/Enums';
+import { Station } from './Station.model';
 
 @pre<Element>('save', function(next) {
-    if (this.parent == undefined) this.parent == null;
+    if (this.parentId == undefined) throw 'ElementModel: parentId not set';
+    if (this.stationId == undefined) throw 'ElementModel: stationId not set';
 
     next();
 })
@@ -18,7 +20,10 @@ export class Element extends Typegoose {
     type: ElementType;
 
     @prop({ required: true, ref: Element })
-    parent: Ref<Element>;
+    parentId: Ref<Element>;
+
+    @prop({ required: true, ref: Station })
+    stationId: Ref<Station>;
 }
 
 export const ElementModel = new Element().getModelForClass(Element, {

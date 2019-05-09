@@ -5,7 +5,6 @@ import HttpStatus from '../utils/HttpStatus';
 
 import RequestRepository from '../repositories/RequestRepository';
 import ElementRepository from '../repositories/ElementRepository';
-import StationRepository from '../repositories/StationRepository';
 import NotificationRepository from '../repositories/NotificationRepository';
 
 class UserController implements Controller {
@@ -17,30 +16,18 @@ class UserController implements Controller {
     }
 
     private initRoutes(): void {
-        this.router.get(`${this.rootPath}/stations`, this.getLocations.bind(this));
-        this.router.get(`${this.rootPath}/elements`, this.getElements.bind(this));
+        this.router.get(`${this.rootPath}/elements/:stationId`, this.getElements.bind(this));
 
         this.router.post(`${this.rootPath}/requests`, this.submitRequest.bind(this));
-        this.router.post(`${this.rootPath}/notifications`, this.submitNotification.bind(this));
-    }
-
-    /* Route for gettinge all the stations */
-    private getLocations(req: express.Request, res: express.Response): void {
-        StationRepository.getInstance()
-            .getAll()
-            .then(stations => {
-                if (stations.length == 0) res.status(HttpStatus.NotFound).send();
-                else res.status(HttpStatus.OK).json(stations);
-            })
-            .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
-            });
+        this.router.post(`${this.rootPath}/notifications`, this.submitItemNotification.bind(this));
     }
 
     /* Route for getting all the elements */
     private getElements(req: express.Request, res: express.Response): void {
+        const stationId = req.params.stationId;
+
         ElementRepository.getInstance()
-            .getElements()
+            .getElements(stationId)
             .then(elements => {
                 res.status(HttpStatus.OK).json(elements);
             })
@@ -65,11 +52,11 @@ class UserController implements Controller {
     }
 
     /* Route for submitting a notification */
-    private submitNotification(req: express.Request, res: express.Response): void {
+    private submitItemNotification(req: express.Request, res: express.Response): void {
         const document = req.body;
 
         NotificationRepository.getInstance()
-            .add(document)
+            .addItemNotification(document)
             .then(notification => {
                 res.status(HttpStatus.OK).json(notification);
             })

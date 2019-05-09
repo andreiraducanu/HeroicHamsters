@@ -5,17 +5,17 @@ import { Station } from './Station.model';
 import { Element } from './Element.model';
 
 @pre<Quantity>('save', function(next) {
-    if (this.item == undefined) throw 'QuantityModel: item not set';
-    if (this.station == undefined) throw 'QuantityModel: station not set';
+    if (this.itemId == undefined) throw 'QuantityModel: itemId not set';
+    if (this.stationId == undefined) throw 'QuantityModel: stationId not set';
 
     next();
 })
 export class Quantity extends Typegoose {
     @prop({ required: true, ref: Element })
-    item: Ref<Element>;
+    itemId: Ref<Element>;
 
     @prop({ required: true, ref: Station })
-    station: Ref<Station>;
+    stationId: Ref<Station>;
 
     @prop({ required: true, min: 0 })
     quantity: number;

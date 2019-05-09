@@ -6,7 +6,7 @@ import { Station } from './Station.model';
 
 @pre<Request>('save', function(next) {
     if (this.creationTime == undefined) this.creationTime = new Date(Date.now()).toLocaleString('en-GB');
-    if (this.stationId == undefined) throw 'RequestModel: station not set';
+    if (this.stationId == undefined) throw 'RequestModel: stationId not set';
     if (this.status == undefined) this.status = Status.OPEN;
 
     next();

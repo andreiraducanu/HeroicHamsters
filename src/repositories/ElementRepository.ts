@@ -32,9 +32,10 @@ class ElementRepository extends ICrudRepository<Element> {
 
         ret.station = {};
         ret.station.id = station._id;
-        ret.station.companyName = station.companyName;
-        ret.station.levelIndex = station.levelIndex;
-        ret.station.roomIndex = station.roomIndex;
+        ret.station.floor = station.floor;
+        ret.station.name = station.name;
+        ret.station.image = station.image;
+
         ret.elements = await this.recursiveElements(null, stationId);
 
         return ret;

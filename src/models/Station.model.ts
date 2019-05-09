@@ -9,7 +9,7 @@ export class Station extends Typegoose {
     levelIndex: number;
 
     @prop({ required: true, min: 0 })
-    tableIndex: number;
+    roomIndex: number;
 }
 
 export const StationModel = new Station().getModelForClass(Station, {

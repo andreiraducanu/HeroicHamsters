@@ -5,7 +5,6 @@ import HttpStatus from '../utils/HttpStatus';
 
 import RequestRepository from '../repositories/RequestRepository';
 import ElementRepository from '../repositories/ElementRepository';
-import StationRepository from '../repositories/StationRepository';
 import NotificationRepository from '../repositories/NotificationRepository';
 
 class UserController implements Controller {
@@ -20,7 +19,7 @@ class UserController implements Controller {
         this.router.get(`${this.rootPath}/elements/:stationId`, this.getElements.bind(this));
 
         this.router.post(`${this.rootPath}/requests`, this.submitRequest.bind(this));
-        this.router.post(`${this.rootPath}/notifications`, this.submitNotification.bind(this));
+        this.router.post(`${this.rootPath}/notifications`, this.submitItemNotification.bind(this));
     }
 
     /* Route for getting all the elements */
@@ -53,11 +52,11 @@ class UserController implements Controller {
     }
 
     /* Route for submitting a notification */
-    private submitNotification(req: express.Request, res: express.Response): void {
+    private submitItemNotification(req: express.Request, res: express.Response): void {
         const document = req.body;
 
         NotificationRepository.getInstance()
-            .add(document)
+            .addItemNotification(document)
             .then(notification => {
                 res.status(HttpStatus.OK).json(notification);
             })

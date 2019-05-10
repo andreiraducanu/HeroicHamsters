@@ -4,7 +4,7 @@ import { ElementType } from '../utils/Enums';
 import { Station } from './Station.model';
 
 @pre<Element>('save', function(next) {
-    if (this.parentId == undefined) throw 'ElementModel: parentId not set';
+    if (this.parentId == undefined) this.parentId = null;
     if (this.stationId == undefined) throw 'ElementModel: stationId not set';
 
     next();

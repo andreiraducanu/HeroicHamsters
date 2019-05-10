@@ -8,7 +8,7 @@ export class Location extends Typegoose {
 
 export const LocationModel = new Location().getModelForClass(Location, {
     existingMongoose: mongoose,
-    schemaOptions: { collection: 'Locations' },
+    schemaOptions: { collection: 'locations' },
 });
 
 export default LocationModel;

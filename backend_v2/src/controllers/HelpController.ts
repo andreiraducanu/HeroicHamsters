@@ -3,7 +3,7 @@ import Controller from './Controller';
 
 import HttpStatus from '../utils/HttpStatus';
 
-import data from '../resources/data.json';
+import HelpRepository from '../repositories/HelpRepository';
 
 class HelpController implements Controller {
     public rootPath = '/help';
@@ -15,13 +15,29 @@ class HelpController implements Controller {
 
     private initRoutes(): void {
         this.router.get(`${this.rootPath}/create`, this.create.bind(this));
+        this.router.get(`${this.rootPath}/delete`, this.delete.bind(this));
     }
 
     private create(req: express.Request, res: express.Response): void {
-        // aici va fi logica pt inserare
-        console.log(data.location.stations.length);
+        HelpRepository.getInstance()
+            .populate()
+            .then(msg => {
+                res.status(HttpStatus.OK).send(msg);
+            })
+            .catch(err => {
+                res.status(HttpStatus.BadRequest).send(err);
+            });
+    }
 
-        res.status(HttpStatus.OK).send('values inserted into database');
+    private delete(req: express.Request, res: express.Response): void {
+        HelpRepository.getInstance()
+            .deleteAll()
+            .then(msg => {
+                res.status(HttpStatus.OK).send(msg);
+            })
+            .catch(err => {
+                res.status(HttpStatus.BadRequest).send(err);
+            });
     }
 }
 

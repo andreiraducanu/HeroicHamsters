@@ -60,7 +60,7 @@ class NotificationRepository extends ICrudRepository<Notification> {
             }).save();
         } else {
             // the message exists and we update it
-            MessageModel.findByIdAndUpdate(message[0]._id, { content: content }, { new: true }).exec();
+            MessageModel.findByIdAndUpdate(message[0]._id, { $set: { content: content } }, { new: true }).exec();
         }
 
         return newNotification.save();

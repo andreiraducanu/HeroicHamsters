@@ -44,7 +44,7 @@ class ElementRepository extends ICrudRepository<Element> {
     private async recursiveElements(parentId: string, stationId: string): Promise<any[]> {
         let ret = new Array<any>();
 
-        const elements = await ElementModel.find({ parentId: parentId }).exec();
+        const elements = await ElementModel.find({ parentId: parentId, stationId: stationId }).exec();
 
         for (let i = 0; i < elements.length; i++) {
             let element: any = {};

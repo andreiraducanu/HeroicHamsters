@@ -97,11 +97,11 @@ class HelpRepository {
     }
 
     public async deleteAll(): Promise<string> {
-        LocationModel.deleteMany({});
-        StationModel.deleteMany({});
-        ElementModel.deleteMany({});
-        MessageModel.deleteMany({});
-        NotificationModel.deleteMany({});
+        await LocationModel.deleteMany({}).exec();
+        await StationModel.deleteMany({}).exec();
+        await ElementModel.deleteMany({}).exec();
+        await MessageModel.deleteMany({}).exec();
+        await NotificationModel.deleteMany({}).exec();
 
         return 'database deleted';
     }

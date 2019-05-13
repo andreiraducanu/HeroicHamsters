@@ -3,8 +3,7 @@ import Controller from './Controller';
 
 import HttpStatus from '../utils/HttpStatus';
 
-import ElementRepository from '../repositories/ElementRepository';
-import MessageRepository from '../repositories/MessageRepository';
+import SmartOfficeRepository from '../repositories/SmartOfficeRepository';
 
 class AdminController implements Controller {
     public rootPath = '/admin';
@@ -15,30 +14,16 @@ class AdminController implements Controller {
     }
 
     private initRoutes(): void {
-        this.router.post(`${this.rootPath}/elements`, this.addElement.bind(this));
-        this.router.post(`${this.rootPath}/messages`, this.addMessage.bind(this));
+        this.router.get(`${this.rootPath}/location/:locationId`, this.getLocationStructure.bind(this));
     }
 
-    private addElement(req: express.Request, res: express.Response): void {
-        const document = req.body;
+    private getLocationStructure(req: express.Request, res: express.Response): void {
+        const locationId = req.params.locationId;
 
-        ElementRepository.getInstance()
-            .add(document)
-            .then(item => {
-                res.status(HttpStatus.OK).json(item);
-            })
-            .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
-            });
-    }
-
-    private addMessage(req: express.Request, res: express.Response): void {
-        const document = req.body;
-
-        MessageRepository.getInstance()
-            .add(document)
-            .then(message => {
-                res.status(HttpStatus.OK).json(message);
+        SmartOfficeRepository.getInstance()
+            .getLocationStructure(locationId)
+            .then(stations => {
+                res.status(HttpStatus.OK).json(stations);
             })
             .catch(err => {
                 res.status(HttpStatus.BadRequest).send(err);

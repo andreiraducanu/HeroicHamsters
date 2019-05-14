@@ -2,11 +2,11 @@ import * as mongoose from 'mongoose';
 import { pre, prop, Typegoose, Ref } from 'typegoose';
 import { Status } from '../utils/Enums';
 
-import { Station } from './Station.model';
+import { Location } from './Location.model';
 
 @pre<Request>('save', function(next) {
     if (this.creationTime == undefined) this.creationTime = new Date(Date.now()).toLocaleString('en-GB');
-    if (this.stationId == undefined) throw 'RequestModel: stationId not set';
+    if (this.locationId == undefined) throw 'RequestModel: stationId not set';
     if (this.status == undefined) this.status = Status.OPEN;
 
     next();
@@ -27,8 +27,8 @@ export class Request extends Typegoose {
     @prop({ enum: Status })
     status: Status;
 
-    @prop({ required: true, ref: Station })
-    stationId: Ref<Station>;
+    @prop({ required: true, ref: Location })
+    locationId: Ref<Location>;
 }
 
 export const RequestModel = new Request().getModelForClass(Request, {

@@ -2,10 +2,11 @@ import LocationModel from '../models/Location.model';
 import StationModel, { Station } from '../models/Station.model';
 import ElementModel, { Element } from '../models/Element.model';
 import MessageModel from '../models/Message.model';
+import NotificationModel from '../models/Notification.model';
 
 import data from '../resources/data.json';
 
-import { ElementType } from '../utils/Enums';
+import { ElementType, MessageType } from '../utils/Enums';
 
 class HelpRepository {
     private static instance: HelpRepository;
@@ -38,7 +39,7 @@ class HelpRepository {
         return 'values inserted into database';
     }
 
-    public async recursiveElements(station: Station, elements: any[], parent: Element) {
+    private recursiveElements(station: Station, elements: any[], parent: Element): void {
         for (let i = 0; i < elements.length; i++) {
             let element = new ElementModel({
                 name: elements[i].name,
@@ -63,6 +64,7 @@ class HelpRepository {
                     // element has notifications
                     let notifications: any[] = elements[i].notifications;
                     for (let j = 0; j < notifications.length; j++) {
+                        // if the message is from platform, generate notifications
                         let message = new MessageModel({
                             type: notifications[j].type,
                             content: notifications[j].content,
@@ -70,17 +72,36 @@ class HelpRepository {
                             stationId: station,
                         });
                         message.save();
+
+                        if (message.type == MessageType.PLATFORM) {
+                            let amount = parseInt(message.content.split(' ', 1)[0]);
+                            this.generateNotfications(amount, element, station);
+                        }
                     }
                 }
             }
         }
     }
 
+    private generateNotfications(amount: number, element: Element, station: Station): void {
+        for (let i = 0; i < amount; i++) {
+            let quantity = Math.floor(Math.random() * 10);
+
+            let notification = new NotificationModel({
+                quantity: quantity,
+                itemId: element,
+                stationId: station,
+            });
+            notification.save();
+        }
+    }
+
     public async deleteAll(): Promise<string> {
-        await LocationModel.deleteMany({});
-        await StationModel.deleteMany({});
-        await ElementModel.deleteMany({});
-        await MessageModel.deleteMany({});
+        await LocationModel.deleteMany({}).exec();
+        await StationModel.deleteMany({}).exec();
+        await ElementModel.deleteMany({}).exec();
+        await MessageModel.deleteMany({}).exec();
+        await NotificationModel.deleteMany({}).exec();
 
         return 'database deleted';
     }

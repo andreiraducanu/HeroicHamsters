@@ -4,8 +4,7 @@ import Controller from './Controller';
 import HttpStatus from '../utils/HttpStatus';
 
 import RequestRepository from '../repositories/RequestRepository';
-import ElementRepository from '../repositories/ElementRepository';
-import NotificationRepository from '../repositories/NotificationRepository';
+import SmartOfficeRepository from '../repositories/SmartOfficeRepository';
 
 class UserController implements Controller {
     public rootPath = '/user';
@@ -16,18 +15,18 @@ class UserController implements Controller {
     }
 
     private initRoutes(): void {
-        this.router.get(`${this.rootPath}/elements/:stationId`, this.getElements.bind(this));
+        this.router.get(`${this.rootPath}/station/:stationId`, this.getStationStructure.bind(this));
 
         this.router.post(`${this.rootPath}/requests`, this.submitRequest.bind(this));
         this.router.post(`${this.rootPath}/notifications`, this.submitItemNotification.bind(this));
     }
 
     /* Route for getting all the elements */
-    private getElements(req: express.Request, res: express.Response): void {
+    private getStationStructure(req: express.Request, res: express.Response): void {
         const stationId = req.params.stationId;
 
-        ElementRepository.getInstance()
-            .getElements(stationId)
+        SmartOfficeRepository.getInstance()
+            .getStationStructure(stationId)
             .then(elements => {
                 res.status(HttpStatus.OK).json(elements);
             })
@@ -55,7 +54,7 @@ class UserController implements Controller {
     private submitItemNotification(req: express.Request, res: express.Response): void {
         const document = req.body;
 
-        NotificationRepository.getInstance()
+        SmartOfficeRepository.getInstance()
             .addItemNotification(document)
             .then(notification => {
                 res.status(HttpStatus.OK).json(notification);

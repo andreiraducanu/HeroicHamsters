@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import Controller from './controllers/Controller';
 import MongoDB from './utils/MongoDB';
 
@@ -37,6 +38,7 @@ class App {
 
     /* enable Middlewares */
     private initMiddlewares() {
+        this.app.use(cors());
         this.app.use(morgan('dev'));
         this.app.use(bodyParser.json());
     }

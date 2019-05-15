@@ -100,3 +100,4 @@ nodemon.json
 
 #sonarqube-scanner
 .scannerwork
+sonar-project.properties

@@ -6,10 +6,16 @@ import MessageModel from '../models/Message.model';
 import { Status, MessageType } from '../utils/Enums';
 import LocationModel from '../models/Location.model';
 
+import fs from 'fs';
+import QuantityModel from '../models/Quantity.model';
+
 class SmartOfficeRepository {
     private static instance: SmartOfficeRepository;
+    private readonly cachePath = './src/resources/cache.json';
 
     private constructor() {}
+
+    private cacheData: any;
 
     public static getInstance(): SmartOfficeRepository {
         if (!this.instance) SmartOfficeRepository.instance = new SmartOfficeRepository();
@@ -17,23 +23,50 @@ class SmartOfficeRepository {
         return SmartOfficeRepository.instance;
     }
 
-    public async getStationStructure(stationId: string): Promise<any[]> {
+    public getStationStructure(stationId: string) {
+        const stations: any[] = this.cacheData.stations;
+
+        let ret = stations.find(element => {
+            return element.id == stationId;
+        });
+
+        return ret;
+    }
+
+    public getLocationStructure() {
+        return this.cacheData;
+    }
+
+    public async updateCache() {
+        const location = await LocationModel.findOne().exec();
+
+        console.log('[debug] Cache is updating...');
+
+        this.createLocationStructure(location._id).then(data => {
+            this.cacheData = data;
+
+            console.log('[debug] Cache has benn updated');
+        });
+    }
+
+    private async createStationStructure(stationId: string): Promise<any[]> {
         let ret: any = {};
 
         const station = await StationModel.findById(stationId).exec();
 
-        ret.station = {};
-        ret.station.id = station._id;
-        ret.station.floor = station.floor;
-        ret.station.name = station.name;
-        ret.station.image = station.image;
+        ret = {};
+        ret.id = station._id;
+        ret.name = station.name;
+        ret.description = station.description;
+        ret.image = station.image;
+        ret.floor = station.floor;
 
         ret.elements = await this.recursiveElements(null, stationId);
 
         return ret;
     }
 
-    public async getLocationStructure(locationId: string): Promise<any[]> {
+    private async createLocationStructure(locationId: string): Promise<any[]> {
         let ret: any = {};
 
         const location = await LocationModel.findById(locationId).exec();
@@ -46,11 +79,11 @@ class SmartOfficeRepository {
 
         let tempStations: any[] = new Array<any>();
         for (let i = 0; i < stations.length; i++) {
-            let station = await this.getStationStructure(stations[i]._id);
+            let station = await this.createStationStructure(stations[i]._id);
             tempStations.push(station);
         }
 
-        ret.location.stations = tempStations;
+        ret.stations = tempStations;
 
         return ret;
     }
@@ -89,6 +122,10 @@ class SmartOfficeRepository {
 
                     notifications.push(notification);
                 }
+
+                const quantity = await QuantityModel.find({ itemId: element.id, stationId: stationId }).exec();
+
+                if (quantity.length != 0) element.quantity = quantity[0].quantity;
 
                 if (notifications.length != 0) element.notifications = notifications;
             }

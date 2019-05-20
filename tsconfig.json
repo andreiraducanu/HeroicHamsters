@@ -3,14 +3,19 @@
         "module": "commonjs",
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "target": "es6",
+        "target": "es2016",
+        "lib": [
+            "dom",
+            "es2016",
+            "esnext.asynciterable"
+        ],
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "outDir": "out",
-        "baseUrl": "src",
+        "outDir": "./out",
+        "baseUrl": "./src",
         "paths": {
             "*": [
                 "node_modules/*"
@@ -18,6 +23,6 @@
         }
     },
     "include": [
-        "src/**/*"
+        "./src/**/*"
     ]
 }

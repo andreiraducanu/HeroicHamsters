@@ -25,15 +25,10 @@ class UserController implements Controller {
     private getStationStructure(req: express.Request, res: express.Response): void {
         const stationId = req.params.stationId;
 
-        SmartOfficeRepository.getInstance()
-            .getStationStructure(stationId)
-            .then(elements => {
-                res.status(HttpStatus.OK).json(elements);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(HttpStatus.BadRequest).send(err);
-            });
+        const data = SmartOfficeRepository.getInstance().getStationStructure(stationId);
+
+        if (data != null) res.status(HttpStatus.OK).json(data);
+        else res.status(HttpStatus.BadRequest).send();
     }
 
     /* Route for submitting a request */

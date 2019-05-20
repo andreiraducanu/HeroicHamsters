@@ -14,20 +14,16 @@ class AdminController implements Controller {
     }
 
     private initRoutes(): void {
-        this.router.get(`${this.rootPath}/location/:locationId`, this.getLocationStructure.bind(this));
+        this.router.get(`${this.rootPath}/location`, this.getLocationStructure.bind(this));
+
+        SmartOfficeRepository.getInstance().updateCache();
     }
 
     private getLocationStructure(req: express.Request, res: express.Response): void {
-        const locationId = req.params.locationId;
+        const data = SmartOfficeRepository.getInstance().getLocationStructure();
 
-        SmartOfficeRepository.getInstance()
-            .getLocationStructure(locationId)
-            .then(stations => {
-                res.status(HttpStatus.OK).json(stations);
-            })
-            .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
-            });
+        if (data != null) res.status(HttpStatus.OK).json(data);
+        else res.status(HttpStatus.BadRequest).send();
     }
 }
 

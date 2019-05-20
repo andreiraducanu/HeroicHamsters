@@ -3,6 +3,7 @@ import StationModel, { Station } from '../models/Station.model';
 import ElementModel, { Element } from '../models/Element.model';
 import MessageModel from '../models/Message.model';
 import NotificationModel from '../models/Notification.model';
+import QuantityModel from '../models/Quantity.model';
 
 import data from '../resources/data.json';
 
@@ -23,10 +24,11 @@ class HelpRepository {
         let location = new LocationModel({ name: data.location.name });
         location.save();
 
-        let stations = data.location.stations;
+        let stations = data.stations;
         for (let i = 0; i < stations.length; i++) {
             let station = new StationModel({
-                name: stations[i].stationName,
+                name: stations[i].name,
+                description: stations[i].description,
                 floor: stations[i].floor,
                 image: stations[i].image,
                 locationId: location,
@@ -59,6 +61,16 @@ class HelpRepository {
                 }
             } else if (elements[i].type == ElementType.ITEM) {
                 // the element is a item
+
+                if (elements[i].quantity !== undefined) {
+                    let quantity = new QuantityModel({
+                        itemId: element,
+                        stationId: station,
+                        quantity: elements[i].quantity,
+                    });
+
+                    quantity.save();
+                }
 
                 if (elements[i].notifications !== undefined) {
                     // element has notifications
@@ -102,6 +114,7 @@ class HelpRepository {
         await ElementModel.deleteMany({}).exec();
         await MessageModel.deleteMany({}).exec();
         await NotificationModel.deleteMany({}).exec();
+        await QuantityModel.deleteMany({}).exec();
 
         return 'database deleted';
     }

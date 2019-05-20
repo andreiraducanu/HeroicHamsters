@@ -18,6 +18,9 @@ export class Station extends Typegoose {
     name: string;
 
     @prop({ required: true })
+    description: string;
+
+    @prop({ required: true })
     image: string;
 }
 

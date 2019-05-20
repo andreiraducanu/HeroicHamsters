@@ -43,6 +43,8 @@ class UserController implements Controller {
             .catch(err => {
                 res.status(HttpStatus.BadRequest).send(err);
             });
+
+        SmartOfficeRepository.getInstance().updateCache();
     }
 
     /* Route for submitting a notification */
@@ -57,6 +59,8 @@ class UserController implements Controller {
             .catch(err => {
                 res.status(HttpStatus.BadRequest).send(err);
             });
+
+        SmartOfficeRepository.getInstance().updateCache();
     }
 }
 

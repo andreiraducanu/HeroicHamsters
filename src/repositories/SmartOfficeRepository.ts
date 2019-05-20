@@ -11,7 +11,6 @@ import QuantityModel from '../models/Quantity.model';
 
 class SmartOfficeRepository {
     private static instance: SmartOfficeRepository;
-    private readonly cachePath = './src/resources/cache.json';
 
     private constructor() {}
 

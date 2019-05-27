@@ -7,15 +7,13 @@ import { Station } from './Station.model';
 import { MessageType } from '../utils/Enums';
 
 @pre<Message>('save', function(next) {
-    if (this.itemId == undefined) throw 'MessageModel: itemId not set';
-    if (this.stationId == undefined) throw 'MessageModel: stationId not set';
-    if (this.createdAt == undefined) this.createdAt = new Date(Date.now()).toLocaleString('en-GB');
+    if (this.createdAt == undefined) this.createdAt = new Date(Date.now());
 
     next();
 })
 export class Message extends Typegoose {
     @prop({ required: true, ref: Element })
-    itemId: Ref<Element>;
+    elementId: Ref<Element>;
 
     @prop({ required: true, ref: Station })
     stationId: Ref<Station>;
@@ -23,11 +21,11 @@ export class Message extends Typegoose {
     @prop({ required: true, enum: MessageType })
     type: MessageType;
 
-    @prop({ required: true, minlength: 5 })
+    @prop({ required: true })
     content: string;
 
     @prop()
-    createdAt: string;
+    createdAt: Date;
 }
 
 export const MessageModel = new Message().getModelForClass(Message, {

@@ -1,13 +1,10 @@
 import * as mongoose from 'mongoose';
 import { pre, prop, Typegoose, Ref } from 'typegoose';
-import { Status } from '../utils/Enums';
 
 import { Station } from './Station.model';
 
 @pre<Request>('save', function(next) {
-    if (this.creationTime == undefined) this.creationTime = new Date(Date.now()).toLocaleString('en-GB');
-    if (this.stationId == undefined) throw 'RequestModel: stationId not set';
-    if (this.status == undefined) this.status = Status.OPEN;
+    if (this.createdAt == undefined) this.createdAt = new Date(Date.now());
 
     next();
 })
@@ -22,10 +19,7 @@ export class Request extends Typegoose {
     badge: string;
 
     @prop()
-    creationTime: string;
-
-    @prop({ enum: Status })
-    status: Status;
+    createdAt: Date;
 
     @prop({ required: true, ref: Station })
     stationId: Ref<Station>;

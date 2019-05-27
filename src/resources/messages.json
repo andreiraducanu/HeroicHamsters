@@ -1,0 +1,291 @@
+{
+    "messages": [
+        {
+            "id": "5ce2ffe428b5b519541f8c0f",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c0c",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c0e",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c0c",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c15",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c13",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c1e",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c1b",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c1d",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c1b",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c3c",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c39",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c3b",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c39",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c42",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c40",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c2b",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c28",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c2a",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c28",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c31",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c2f",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c50",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c4d",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c4f",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c4d",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c56",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c54",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c67",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c65",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c60",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c5e",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c61",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c5e",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c80",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c7e",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c79",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c77",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c7a",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c77",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c8a",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c88",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c8b",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c88",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c91",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c8f",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c9e",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8c9c",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c9f",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8c9c",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8ca5",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8ca3",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cb0",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cad",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8caf",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8cad",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cb6",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cb4",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cc8",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cc5",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cc7",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8cc5",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cce",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8ccc",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cdf",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cdd",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cd8",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8cd6",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cd9",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cd6",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cf3",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cf1",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cec",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8cea",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8ced",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cea",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cfd",
+            "type": "from_management",
+            "content": "We have notified the supplier and are waiting for their response.",
+            "itemId": "5ce2ffe428b5b519541f8cfb",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cfe",
+            "type": "from_platform",
+            "content": "3 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8cfb",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8d04",
+            "type": "from_platform",
+            "content": "4 other notifications have been sent about this item.",
+            "itemId": "5ce2ffe428b5b519541f8d02",
+            "createdAt": "5/20/2019, 10:28:36 PM"
+        }
+    ]
+}

@@ -1,0 +1,206 @@
+{
+    "elements": [
+        {
+            "id": "5ce2ffe428b5b519541f8be4",
+            "type": "category",
+            "name": "Cups",
+            "image": "images/category_1.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8be5",
+            "type": "category",
+            "name": "Paper Cups",
+            "image": "images/category_8.png",
+            "parentId": "5ce2ffe428b5b519541f8be4"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8be6",
+            "type": "item",
+            "name": "Paper Cups Small",
+            "image": "images/item_1.png",
+            "parentId": "5ce2ffe428b5b519541f8be5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8be8",
+            "type": "item",
+            "name": "Paper Cups Medium",
+            "image": "images/item_2.png",
+            "parentId": "5ce2ffe428b5b519541f8be5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bea",
+            "type": "item",
+            "name": "Paper Cups Large",
+            "image": "images/item_3.png",
+            "parentId": "5ce2ffe428b5b519541f8be5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bec",
+            "type": "category",
+            "name": "Glass Cups",
+            "image": "images/category_9.png",
+            "parentId": "5ce2ffe428b5b519541f8be4"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf1",
+            "type": "item",
+            "name": "Glass Cups Large",
+            "image": "images/item_3.png",
+            "parentId": "5ce2ffe428b5b519541f8bec"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bef",
+            "type": "item",
+            "name": "Glass Cups Medium",
+            "image": "images/item_2.png",
+            "parentId": "5ce2ffe428b5b519541f8bec"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bed",
+            "type": "item",
+            "name": "Glass Cups Small",
+            "image": "images/item_1.png",
+            "parentId": "5ce2ffe428b5b519541f8bec"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf3",
+            "type": "category",
+            "name": "Plastic Cups",
+            "image": "images/category_10.png",
+            "parentId": "5ce2ffe428b5b519541f8be4"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c05",
+            "type": "category",
+            "name": "Snacks",
+            "image": "images/category_4.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c06",
+            "type": "category",
+            "name": "Tea",
+            "image": "images/category_5.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf4",
+            "type": "category",
+            "name": "Stationary",
+            "image": "images/category_2.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf5",
+            "type": "category",
+            "name": "Coffee",
+            "image": "images/category_3.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf6",
+            "type": "category",
+            "name": "Paper Coffee",
+            "image": "images/category_8.png",
+            "parentId": "5ce2ffe428b5b519541f8bf5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bfb",
+            "type": "item",
+            "name": "Paper Coffee Large",
+            "image": "images/item_3.png",
+            "parentId": "5ce2ffe428b5b519541f8bf6"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf7",
+            "type": "item",
+            "name": "Paper Coffee Small",
+            "image": "images/item_1.png",
+            "parentId": "5ce2ffe428b5b519541f8bf6"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bf9",
+            "type": "item",
+            "name": "Paper Coffee Medium",
+            "image": "images/item_2.png",
+            "parentId": "5ce2ffe428b5b519541f8bf6"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bfd",
+            "type": "category",
+            "name": "Glass Coffee",
+            "image": "images/category_9.png",
+            "parentId": "5ce2ffe428b5b519541f8bf5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c00",
+            "type": "item",
+            "name": "Glass Coffee Medium",
+            "image": "images/item_2.png",
+            "parentId": "5ce2ffe428b5b519541f8bfd"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8bfe",
+            "type": "item",
+            "name": "Glass Coffee Small",
+            "image": "images/item_1.png",
+            "parentId": "5ce2ffe428b5b519541f8bfd"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c02",
+            "type": "item",
+            "name": "Glass Coffee Large",
+            "image": "images/item_3.png",
+            "parentId": "5ce2ffe428b5b519541f8bfd"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c04",
+            "type": "category",
+            "name": "Plastic Coffee",
+            "image": "images/category_10.png",
+            "parentId": "5ce2ffe428b5b519541f8bf5"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c07",
+            "type": "category",
+            "name": "Soft Drinks",
+            "image": "images/category_6.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c08",
+            "type": "category",
+            "name": "Sugar & Salt Packs",
+            "image": "images/category_7.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c0a",
+            "type": "category",
+            "name": "Fruits",
+            "image": "images/fruits.png"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c0b",
+            "type": "category",
+            "name": "Fruits Subcategory",
+            "image": "images/fruits.png",
+            "parentId": "5ce2ffe428b5b519541f8c0a"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c0c",
+            "type": "item",
+            "name": "Fruits Small",
+            "image": "images/fruits.png",
+            "parentId": "5ce2ffe428b5b519541f8c0b"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c13",
+            "type": "item",
+            "name": "Fruits Medium",
+            "image": "images/fruits.png",
+            "parentId": "5ce2ffe428b5b519541f8c0b"
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c22",
+            "type": "item",
+            "name": "Books",
+            "image": "images/books.png",
+            "parentId": "5ce2ffe428b5b519541f8c1a"
+        }
+    ]
+}

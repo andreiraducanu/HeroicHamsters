@@ -1,12 +1,13 @@
 import * as mongoose from 'mongoose';
-import { pre, prop, Typegoose, Ref } from 'typegoose';
+import { pre, prop, Typegoose, Ref, arrayProp, instanceMethod, InstanceType } from 'typegoose';
 import { ElementType } from '../utils/Enums';
-import { Station } from './Station.model';
 
-@pre<Element>('save', function(next) {
-    if (this.parentId == undefined) this.parentId = null;
-    if (this.stationId == undefined) throw 'ElementModel: stationId not set';
-
+@pre<Element>('findOne', function(next) {
+    this.populate('elements');
+    next();
+})
+@pre<Element>('find', function(next) {
+    this.populate('elements');
     next();
 })
 export class Element extends Typegoose {
@@ -19,11 +20,15 @@ export class Element extends Typegoose {
     @prop({ required: true, enum: ElementType })
     type: ElementType;
 
-    @prop({ required: true, ref: Element })
-    parentId: Ref<Element>;
+    @arrayProp({ itemsRef: Element })
+    elements: Ref<Element>[];
 
-    @prop({ required: true, ref: Station })
-    stationId: Ref<Station>;
+    @instanceMethod
+    addChild(this: InstanceType<Element>, child: InstanceType<Element>) {
+        this.elements.push(child);
+
+        return this.save();
+    }
 }
 
 export const ElementModel = new Element().getModelForClass(Element, {

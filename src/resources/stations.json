@@ -1,0 +1,50 @@
+{
+    "location": {
+        "id": "5ce2ffe428b5b519541f8be2",
+        "name": "Centric Iasi"
+    },
+    "stations": [
+        {
+            "id": "5ce2ffe428b5b519541f8be3",
+            "name": "A1",
+            "description": "North of the Wall, behind the office of the Night King",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 1
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c09",
+            "name": "A2",
+            "description": "South-East corner of the first floor",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 1
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c25",
+            "name": "A3",
+            "description": "Near the ruins of the Great Sept of Baelor, King's Landing",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 1
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c74",
+            "name": "B2",
+            "description": "At the end of the long hallway",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 2
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8c73",
+            "name": "B1",
+            "description": "Winterfell, behind the walls of the castle",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 2
+        },
+        {
+            "id": "5ce2ffe428b5b519541f8cc2",
+            "name": "C1",
+            "description": "You know where it is",
+            "image": "http://www.iida.org/resources/content/9/3/9/5/images/42_resizedc800x530.jpg",
+            "floor": 3
+        }
+    ]
+}

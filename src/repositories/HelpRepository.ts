@@ -3,9 +3,11 @@ import StationModel, { Station } from '../models/Station.model';
 import ElementModel, { Element } from '../models/Element.model';
 import MessageModel from '../models/Message.model';
 import NotificationModel from '../models/Notification.model';
-import QuantityModel from '../models/Quantity.model';
 
-import data from '../resources/data.json';
+import * as data1 from '../resources/stations.json';
+import * as data2 from '../resources/elements.json';
+import * as data3 from '../resources/messages.json';
+import * as data4 from '../resources/stationElements.json';
 
 import { ElementType, MessageType } from '../utils/Enums';
 
@@ -20,27 +22,86 @@ class HelpRepository {
         return HelpRepository.instance;
     }
 
+    // WORKING !!!!
     public async populate(): Promise<string> {
-        let location = new LocationModel({ name: data.location.name });
-        location.save();
+        let elements = data2.elements;
+        let itemEncountered = 0;
+        let categoryEncountered = 0;
+        let roots = [];
+        let ok = 0;
+        let element = new ElementModel({
+            name: elements[0].name,
+            image: elements[0].image,
+            type: elements[0].type,
+        });
 
-        let stations = data.stations;
+        await element.save().catch(err => console.log('caught err'));
+
+        let root = await ElementModel.findOne({})
+            .sort({ _id: -1 })
+            .limit(1)
+            .exec();
+
+        roots.push(root);
+
+        for (let i = 1; i < elements.length; i++) {
+            let element = new ElementModel({
+                name: elements[i].name,
+                image: elements[i].image,
+                type: elements[i].type,
+            });
+
+            await element.save().catch(err => console.log('caught err'));
+
+            //  if (typeof elements[i].parentId != undefined) {
+
+            if (elements[i].type == 'item') {
+                itemEncountered = 1;
+                categoryEncountered = 0;
+                await roots[roots.length - 1].addChild(element).catch(err => console.log('caught err'));
+            } else if (elements[i].type == 'category') {
+                if (itemEncountered == 1 || categoryEncountered == 1) {
+                    roots.pop();
+                    itemEncountered = 0;
+                }
+
+                categoryEncountered = 1;
+                if (typeof elements[i].parentId == 'undefined' && roots.length != 0) {
+                    //am dat peste  un element fara parentId sterg tot din roots
+                    categoryEncountered = 0;
+                    roots.splice(0, roots.length);
+                    console.log(elements[i].name);
+                } else if (roots.length != 0)
+                    await roots[roots.length - 1].addChild(element).catch(err => console.log('caught err'));
+
+                root = await ElementModel.findOne({})
+                    .sort({ _id: -1 })
+                    .limit(1)
+                    .exec();
+                roots.push(root);
+            }
+        }
+
+        let location = new LocationModel({ name: data1.location.name });
+
+        let stations = data1.stations;
         for (let i = 0; i < stations.length; i++) {
             let station = new StationModel({
                 name: stations[i].name,
                 description: stations[i].description,
                 floor: stations[i].floor,
                 image: stations[i].image,
-                locationId: location,
             });
             station.save();
-
-            if (stations[i].elements !== undefined) this.recursiveElements(station, stations[i].elements, null);
+            location.addStation(station);
         }
+
+        location.save();
 
         return 'values inserted into database';
     }
 
+    /* NOT WORKING !!!!!!! */
     private recursiveElements(station: Station, elements: any[], parent: Element): void {
         for (let i = 0; i < elements.length; i++) {
             let element = new ElementModel({
@@ -61,16 +122,6 @@ class HelpRepository {
                 }
             } else if (elements[i].type == ElementType.ITEM) {
                 // the element is a item
-
-                if (elements[i].quantity !== undefined) {
-                    let quantity = new QuantityModel({
-                        itemId: element,
-                        stationId: station,
-                        quantity: elements[i].quantity,
-                    });
-
-                    quantity.save();
-                }
 
                 if (elements[i].notifications !== undefined) {
                     // element has notifications
@@ -95,6 +146,7 @@ class HelpRepository {
         }
     }
 
+    /* NOT WORKING !!!!!!! */
     private generateNotfications(amount: number, element: Element, station: Station): void {
         for (let i = 0; i < amount; i++) {
             let quantity = Math.floor(Math.random() * 10);
@@ -114,7 +166,6 @@ class HelpRepository {
         await ElementModel.deleteMany({}).exec();
         await MessageModel.deleteMany({}).exec();
         await NotificationModel.deleteMany({}).exec();
-        await QuantityModel.deleteMany({}).exec();
 
         return 'database deleted';
     }

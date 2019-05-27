@@ -1,16 +1,8 @@
-import { pre, Ref, prop, Typegoose } from 'typegoose';
+import { Ref, prop, Typegoose, arrayProp, instanceMethod, InstanceType } from 'typegoose';
 import * as mongoose from 'mongoose';
-import { Location } from './Location.model';
+import { Element } from './Element.model';
 
-@pre<Station>('save', function(next) {
-    if (this.locationId == undefined) throw 'StationModel: locationId not set';
-
-    next();
-})
 export class Station extends Typegoose {
-    @prop({ required: true, ref: Location })
-    locationId: Ref<Location>;
-
     @prop({ required: true })
     floor: number;
 
@@ -22,6 +14,16 @@ export class Station extends Typegoose {
 
     @prop({ required: true })
     image: string;
+
+    @arrayProp({ itemsRef: Element })
+    elements: Ref<Element>[];
+
+    @instanceMethod
+    addElement(this: InstanceType<Station>, element: InstanceType<Element>) {
+        this.elements.push(element);
+
+        return this.save();
+    }
 }
 
 export const StationModel = new Station().getModelForClass(Station, {

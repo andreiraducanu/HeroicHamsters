@@ -34,14 +34,14 @@ class NotificationRepository extends ICrudRepository<Notification> {
 
         // get the message for specific item
         const message = await MessageModel.find({
-            itemId: newNotification.elementId,
+            elementId: newNotification.elementId,
             stationId: newNotification.stationId,
             type: MessageType.PLATFORM,
         }).exec();
 
         // get all notifications for specific item
         const notifications = await NotificationModel.find({
-            itemId: newNotification.elementId,
+            elementId: newNotification.elementId,
             stationId: newNotification.stationId,
         }).exec();
 
@@ -53,7 +53,7 @@ class NotificationRepository extends ICrudRepository<Notification> {
             // the message doesn't exists and we create it
             new MessageModel({
                 type: MessageType.PLATFORM,
-                itemId: newNotification.elementId,
+                elementId: newNotification.elementId,
                 stationId: newNotification.stationId,
                 content: content,
             }).save();

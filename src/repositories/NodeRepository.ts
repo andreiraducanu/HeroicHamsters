@@ -93,9 +93,13 @@ class NodeRepository {
             elementNode.messages = undefined;
         } else {
             elementNode.elements = undefined;
-            elementNode.messages = messages
-                .filter(message => message.elementId == element._id)
-                .map(message => this.createMessageNode(message));
+
+            for (let i = 0; i < messages.length; i++) {
+                if (messages[i].elementId.toString() == element._id.toString()) {
+                    let message = this.createMessageNode(messages[i]);
+                    elementNode.messages.push(message);
+                }
+            }
         }
 
         return elementNode;

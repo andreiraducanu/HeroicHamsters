@@ -1,5 +1,11 @@
 import { ElementType, MessageType } from './Enums';
 
+export interface StockItemNode {
+    id: string;
+    quantity: number;
+    expirationDate: Date;
+}
+
 export interface MessageNode {
     id: string;
     type: MessageType;
@@ -15,6 +21,8 @@ export interface ElementNode {
     parentId: string;
     elements: ElementNode[];
     messages: MessageNode[];
+    quantity: number;
+    stock: StockItemNode[];
 }
 
 export interface StationNode {

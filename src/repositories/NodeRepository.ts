@@ -1,4 +1,4 @@
-import { MessageNode, ElementNode, StationNode, LocationNode } from '../utils/NodeTypes';
+import { MessageNode, ElementNode, StationNode, LocationNode, StockItemNode } from '../utils/NodeTypes';
 import { InstanceType } from 'typegoose';
 import { ElementType } from '../utils/Enums';
 
@@ -6,6 +6,7 @@ import { LocationModel, Location } from '../models/Location.model';
 import { StationModel, Station } from '../models/Station.model';
 import { ElementModel, Element } from '../models/Element.model';
 import { MessageModel, Message } from '../models/Message.model';
+import { StockItemModel, StockItem } from '../models/StockItem.model';
 
 class NodeRepository {
     private static instance: NodeRepository;
@@ -27,7 +28,7 @@ class NodeRepository {
 
     public async getStationNode(stationId: string): Promise<StationNode> {
         const station = await StationModel.findById(stationId).exec();
-        let stationNode: StationNode = await this.createStationNode(station);
+        let stationNode: StationNode = await this.createStationNode(station, false);
 
         return stationNode;
     }
@@ -41,14 +42,14 @@ class NodeRepository {
 
         let stations: any = location.stations;
         for (let i = 0; i < stations.length; i++) {
-            let stationNode = await this.createStationNode(stations[i]);
+            let stationNode = await this.createStationNode(stations[i], true);
             locationNode.stations.push(stationNode);
         }
 
         return locationNode;
     }
 
-    private async createStationNode(station: InstanceType<Station>): Promise<StationNode> {
+    private async createStationNode(station: InstanceType<Station>, getStock: boolean): Promise<StationNode> {
         let stationNode: StationNode = {
             id: station._id,
             floor: station.floor,
@@ -61,8 +62,11 @@ class NodeRepository {
         let elements = await ElementModel.find({ _id: { $in: station.elements } }).exec();
         let messages = await MessageModel.find({ stationId: station._id }).exec();
 
+        let stockItems: InstanceType<StockItem>[] = null;
+        if (getStock == true) stockItems = await StockItemModel.find({ stationId: station._id }).exec();
+
         for (let i = 0; i < elements.length; i++) {
-            let elementNode = this.createElementNode(elements[i], null, messages);
+            let elementNode = this.createElementNode(elements[i], null, messages, stockItems);
             stationNode.elements.push(elementNode);
         }
 
@@ -73,6 +77,7 @@ class NodeRepository {
         element: InstanceType<Element>,
         parentId: string,
         messages: InstanceType<Message>[],
+        stockItems: InstanceType<StockItem>[],
     ): ElementNode {
         let elementNode: ElementNode = {
             id: element._id,
@@ -82,12 +87,14 @@ class NodeRepository {
             parentId: parentId,
             elements: [],
             messages: [],
+            quantity: 0,
+            stock: [],
         };
 
         if (elementNode.type == ElementType.CATEGORY) {
             let elements: any = element.elements;
             for (let i = 0; i < elements.length; i++) {
-                let childNode = this.createElementNode(elements[i], element._id, messages);
+                let childNode = this.createElementNode(elements[i], element._id, messages, stockItems);
                 elementNode.elements.push(childNode);
             }
             elementNode.messages = undefined;
@@ -99,6 +106,19 @@ class NodeRepository {
                     let message = this.createMessageNode(messages[i]);
                     elementNode.messages.push(message);
                 }
+            }
+
+            if (stockItems != null) {
+                for (let i = 0; i < stockItems.length; i++) {
+                    if (stockItems[i].elementId.toString() == element._id.toString()) {
+                        let stockItem = this.createStockItemNode(stockItems[i]);
+                        elementNode.stock.push(stockItem);
+                        elementNode.quantity += stockItem.quantity;
+                    }
+                }
+            } else {
+                elementNode.stock = undefined;
+                elementNode.quantity = undefined;
             }
         }
 
@@ -114,6 +134,16 @@ class NodeRepository {
         };
 
         return messageNode;
+    }
+
+    private createStockItemNode(stockItem: InstanceType<StockItem>): StockItemNode {
+        let stockItemNode: StockItemNode = {
+            id: stockItem._id,
+            quantity: stockItem.quantity,
+            expirationDate: stockItem.expirationDate,
+        };
+
+        return stockItemNode;
     }
 }
 

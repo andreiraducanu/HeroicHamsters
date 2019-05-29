@@ -2,6 +2,7 @@ import express from 'express';
 import Controller from './Controller';
 
 import HttpStatus from '../utils/HttpStatus';
+import schedule from 'node-schedule';
 
 import StockRepository from '../repositories/StockRepository';
 import NodeRepository from '../repositories/NodeRepository';
@@ -14,6 +15,7 @@ class AdminController implements Controller {
 
     constructor() {
         this.initRoutes();
+        this.initExpiredStockItemsSchedule();
     }
 
     private initRoutes(): void {
@@ -29,6 +31,19 @@ class AdminController implements Controller {
         this.router.delete(`${this.rootPath}/messages/filters`, this.deleteMessagesByFilters.bind(this));
     }
 
+    private initExpiredStockItemsSchedule() {
+        schedule.scheduleJob('0 0 * * *', () => {
+            StockRepository.getInstance()
+                .deleteExpiredStockItems()
+                .then(() => {
+                    console.log('[debug] expired stock has been removed');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+    }
+
     /* Route for getting location structure */
     private getLocation(req: express.Request, res: express.Response): void {
         let locationId = req.params.locationId;
@@ -38,7 +53,8 @@ class AdminController implements Controller {
             .then(location => {
                 res.status(HttpStatus.OK).json(location);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -51,7 +67,8 @@ class AdminController implements Controller {
                 if (requests.length == 0) res.status(HttpStatus.NoContent).send();
                 else res.status(HttpStatus.OK).json(requests);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -65,7 +82,8 @@ class AdminController implements Controller {
             .then(stockItem => {
                 res.status(HttpStatus.OK).json(stockItem);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -80,7 +98,8 @@ class AdminController implements Controller {
             .then(stockItem => {
                 res.status(HttpStatus.OK).json(stockItem);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -93,7 +112,8 @@ class AdminController implements Controller {
                 if (messages.length == 0) res.status(HttpStatus.NoContent).send();
                 else res.status(HttpStatus.OK).json(messages);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -108,7 +128,8 @@ class AdminController implements Controller {
                 if (messages.length == 0) res.status(HttpStatus.NoContent).send();
                 else res.status(HttpStatus.OK).json(messages);
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }
@@ -120,7 +141,8 @@ class AdminController implements Controller {
         MessageRepository.getInstance()
             .deleteByFilters(filters)
             .then(() => res.status(HttpStatus.OK).send())
-            .catch(() => {
+            .catch(err => {
+                console.log(err);
                 res.status(HttpStatus.BadRequest).send();
             });
     }

@@ -36,6 +36,11 @@ class StockItemRepository extends ICrudRepository<StockItem> {
         return StockItemModel.deleteMany({}).exec();
     }
 
+    public deleteExpiredStockItems(): Promise<any> {
+        let currentDate = new Date(Date.now());
+        return StockItemModel.deleteMany({ expirationDate: { $lt: currentDate } }).exec();
+    }
+
     public deleteById(id: string): Promise<InstanceType<StockItem>> {
         return StockItemModel.findByIdAndRemove(id).exec();
     }

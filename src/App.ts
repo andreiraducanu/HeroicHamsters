@@ -21,7 +21,7 @@ class App {
     /* start the server */
     public listen(): void {
         this.app.listen(this.PORT, () => {
-            console.log(`[debug] Server is running at http://localhost:${this.PORT}`);
+            console.log(`[debug] server is running at port ${this.PORT}`);
         });
     }
     /* connect to MongoDB */
@@ -29,10 +29,10 @@ class App {
         mongoose
             .connect(MongoDB.getConnectionURL(), { useNewUrlParser: true })
             .then(() => {
-                console.log('[debug] Connected to MongoDB Atlas');
+                console.log('[debug] connected to MongoDB Atlas');
             })
             .catch(() => {
-                console.log('[debug] Error connecting to MongoDB Atlas');
+                console.log('[debug] error connecting to MongoDB Atlas');
             });
     }
 

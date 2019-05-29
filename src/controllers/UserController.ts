@@ -32,7 +32,8 @@ class UserController implements Controller {
                 res.status(HttpStatus.OK).json(station);
             })
             .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
+                console.log(err);
+                res.status(HttpStatus.BadRequest).send();
             });
     }
 
@@ -46,7 +47,8 @@ class UserController implements Controller {
                 res.status(HttpStatus.OK).json(request);
             })
             .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
+                console.log(err);
+                res.status(HttpStatus.BadRequest).send();
             });
     }
 
@@ -60,7 +62,8 @@ class UserController implements Controller {
                 res.status(HttpStatus.OK).json(notification);
             })
             .catch(err => {
-                res.status(HttpStatus.BadRequest).send(err);
+                console.log(err);
+                res.status(HttpStatus.BadRequest).send();
             });
     }
 }

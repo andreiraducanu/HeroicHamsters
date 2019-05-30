@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import Controller from './controllers/Controller';
 import MongoDB from './utils/MongoDB';
+import http from 'http';
 
 class App {
     private PORT = process.env.PORT;
@@ -16,6 +17,7 @@ class App {
         this.initConnectionToDB();
         this.initMiddlewares();
         this.initControllers(controllers);
+        this.initKeepAlive();
     }
 
     /* start the server */
@@ -48,6 +50,13 @@ class App {
         controllers.forEach(controller => {
             this.app.use('/api', controller.router);
         });
+    }
+
+    private initKeepAlive() {
+        setInterval(function() {
+            http.get('http://smart-office-backend.herokuapp.com');
+            console.log('[debug] ping for keeping alive');
+        }, 300000); // every 5 minutes (300000)
     }
 
     public getExpressApp(): express.Application {

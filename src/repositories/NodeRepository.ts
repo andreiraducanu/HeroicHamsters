@@ -1,4 +1,11 @@
-import { MessageNode, ElementNode, StationNode, LocationNode, StockItemNode } from '../utils/NodeTypes';
+import {
+    MessageNode,
+    ElementNode,
+    StationNode,
+    LocationNode,
+    StockItemNode,
+    QuantityHistoryNode,
+} from '../utils/NodeTypes';
 import { InstanceType } from 'typegoose';
 import { ElementType } from '../utils/Enums';
 
@@ -7,6 +14,8 @@ import { StationModel, Station } from '../models/Station.model';
 import { ElementModel, Element } from '../models/Element.model';
 import { MessageModel, Message } from '../models/Message.model';
 import { StockItemModel, StockItem } from '../models/StockItem.model';
+import QuantityHistoryModel, { QuantityHistory } from '../models/QuantityHistory.model';
+import moment from 'moment';
 
 class NodeRepository {
     private static instance: NodeRepository;
@@ -31,6 +40,18 @@ class NodeRepository {
         let stationNode: StationNode = await this.createStationNode(station, false);
 
         return stationNode;
+    }
+
+    public async getQuantityHistoryNodes(): Promise<QuantityHistoryNode[]> {
+        let nodes: QuantityHistoryNode[] = [];
+
+        const quantityHistory = await QuantityHistoryModel.find().exec();
+
+        for (let i = 0; i < quantityHistory.length; i++) {
+            nodes.push(this.createQuantityHistoryNode(quantityHistory[i]));
+        }
+
+        return nodes;
     }
 
     private async createLocationNode(location: InstanceType<Location>): Promise<LocationNode> {
@@ -144,6 +165,16 @@ class NodeRepository {
         };
 
         return stockItemNode;
+    }
+
+    private createQuantityHistoryNode(quantityHistory: InstanceType<QuantityHistory>): QuantityHistoryNode {
+        let historyNode: QuantityHistoryNode = {
+            elementId: quantityHistory.elementId.toString(),
+            quantity: quantityHistory.quantity,
+            date: moment(quantityHistory.date).format('YYYY-MM-DD'),
+        };
+
+        return historyNode;
     }
 }
 

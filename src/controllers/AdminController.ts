@@ -30,6 +30,8 @@ class AdminController implements Controller {
         this.router.get(`${this.rootPath}/messages/all`, this.getAllMessages.bind(this));
         this.router.get(`${this.rootPath}/messages/filters`, this.getMessagesByFilters.bind(this));
         this.router.delete(`${this.rootPath}/messages/filters`, this.deleteMessagesByFilters.bind(this));
+
+        this.router.get(`${this.rootPath}/history/all`, this.getQuantityHistory.bind(this));
     }
 
     private initExpiredStockItemsSchedule() {
@@ -155,6 +157,19 @@ class AdminController implements Controller {
             .deleteExpiredStockItems()
             .then(() => {
                 res.status(HttpStatus.OK).send();
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(HttpStatus.BadRequest).send();
+            });
+    }
+
+    private getQuantityHistory(req: express.Request, res: express.Response): void {
+        NodeRepository.getInstance()
+            .getQuantityHistoryNodes()
+            .then(history => {
+                if (history.length == 0) res.status(HttpStatus.NoContent).send();
+                else res.status(HttpStatus.OK).json(history);
             })
             .catch(err => {
                 console.log(err);

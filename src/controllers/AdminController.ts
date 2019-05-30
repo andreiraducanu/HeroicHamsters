@@ -25,6 +25,7 @@ class AdminController implements Controller {
 
         this.router.post(`${this.rootPath}/stock/add`, this.addStockItem.bind(this));
         this.router.post(`${this.rootPath}/stock/edit/:stockItemId`, this.editStockItem.bind(this));
+        this.router.delete(`${this.rootPath}/stock/expired`, this.deleteExpiredStockItems.bind(this));
 
         this.router.get(`${this.rootPath}/messages/all`, this.getAllMessages.bind(this));
         this.router.get(`${this.rootPath}/messages/filters`, this.getMessagesByFilters.bind(this));
@@ -140,7 +141,21 @@ class AdminController implements Controller {
 
         MessageRepository.getInstance()
             .deleteByFilters(filters)
-            .then(() => res.status(HttpStatus.OK).send())
+            .then(() => {
+                res.status(HttpStatus.OK).send();
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(HttpStatus.BadRequest).send();
+            });
+    }
+
+    private deleteExpiredStockItems(req: express.Request, res: express.Response): void {
+        StockRepository.getInstance()
+            .deleteExpiredStockItems()
+            .then(() => {
+                res.status(HttpStatus.OK).send();
+            })
             .catch(err => {
                 console.log(err);
                 res.status(HttpStatus.BadRequest).send();

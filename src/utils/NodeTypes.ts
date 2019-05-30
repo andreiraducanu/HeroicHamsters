@@ -2,6 +2,7 @@ import { ElementType, MessageType } from './Enums';
 
 export interface QuantityHistoryNode {
     elementId: string;
+    name: string;
     quantity: number;
     date: string;
 }

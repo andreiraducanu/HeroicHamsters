@@ -32,13 +32,14 @@ class HelpController implements Controller {
             let newDate = moment('2018-06-06')
                 .add(j, 'day')
                 .toDate();
+            let quantity = Math.floor(Math.random() * 20 + 40);
 
             elements.forEach(element => {
-                let quantity = Math.floor(Math.random() * 20 + 40);
                 console.log(quantity);
 
                 let document = {
                     elementId: element,
+                    name: element.name,
                     quantity: quantity,
                     date: newDate,
                 };

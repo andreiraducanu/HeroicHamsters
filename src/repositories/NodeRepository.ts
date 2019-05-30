@@ -169,7 +169,8 @@ class NodeRepository {
 
     private createQuantityHistoryNode(quantityHistory: InstanceType<QuantityHistory>): QuantityHistoryNode {
         let historyNode: QuantityHistoryNode = {
-            elementId: quantityHistory.elementId.toString(),
+            elementId: quantityHistory.name,
+            name: name,
             quantity: quantityHistory.quantity,
             date: moment(quantityHistory.date).format('YYYY-MM-DD'),
         };

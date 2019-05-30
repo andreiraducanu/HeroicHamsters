@@ -6,6 +6,9 @@ export class QuantityHistory extends Typegoose {
     @prop({ required: true, ref: Element })
     elementId: Ref<Element>;
 
+    @prop({ required: true })
+    name: string;
+
     @prop({ required: true, min: 0 })
     quantity: number;
 

@@ -34,6 +34,7 @@ class AdminController implements Controller {
         this.router.get(`${this.rootPath}/history/all`, this.getQuantityHistory.bind(this));
     }
 
+    /* Auto delete expired items */
     private initExpiredStockItemsSchedule() {
         schedule.scheduleJob('0 0 * * *', () => {
             StockRepository.getInstance()
@@ -152,6 +153,7 @@ class AdminController implements Controller {
             });
     }
 
+    /* Route for deleting expired items */
     private deleteExpiredStockItems(req: express.Request, res: express.Response): void {
         StockRepository.getInstance()
             .deleteExpiredStockItems()
@@ -164,6 +166,7 @@ class AdminController implements Controller {
             });
     }
 
+    /* Route for getting history */
     private getQuantityHistory(req: express.Request, res: express.Response): void {
         NodeRepository.getInstance()
             .getQuantityHistoryNodes()

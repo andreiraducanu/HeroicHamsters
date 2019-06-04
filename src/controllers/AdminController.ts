@@ -29,10 +29,7 @@ class AdminController implements Controller {
 
         this.router.get(`${this.rootPath}/messages/all`, this.getAllMessages.bind(this));
         this.router.get(`${this.rootPath}/messages/filters`, this.getMessagesByFilters.bind(this));
-        this.router.delete(
-            `${this.rootPath}/messages/filters/:stationId&:elementId`,
-            this.deleteMessagesByFilters.bind(this),
-        );
+        this.router.delete(`${this.rootPath}/messages/filters/:filters`, this.deleteMessagesByFilters.bind(this));
 
         this.router.get(`${this.rootPath}/history/all`, this.getQuantityHistory.bind(this));
     }
@@ -143,10 +140,7 @@ class AdminController implements Controller {
 
     /* Route for deleting messages */
     private deleteMessagesByFilters(req: express.Request, res: express.Response): void {
-        let filters = {
-            stationId: req.params.stationId,
-            elementId: req.params.elementId,
-        };
+        let filters = req.params.filters;
 
         filters.stationId = MessageRepository.getInstance()
             .deleteByFilters(filters)
